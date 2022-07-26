@@ -1,0 +1,32 @@
+<tr>
+    <td align="left" style="padding-bottom:5px">
+        {{ ip_address }} ({{ count }} hits)
+    </td>
+    <td align="right" class="msg-{{main_verdict}}">
+        {{ main_verdict }}
+    </td>
+</tr>
+<tr>
+    <td align="left" class="msg">
+        Disposition
+    </td>
+    <td align="right" class="msg-{%+ if msg_disposition == 'none'%}pass{% else %}fail{% endif %}">
+        {{ msg_disposition }}
+    </td>
+</tr>
+<tr>
+    <td align="left" class="msg">
+        SPF
+    </td>
+    <td align="right" class="msg-{%+ if msg_spf == 'pass'%}pass{% else %}fail{% endif %}">
+        {{ msg_spf }}
+    </td>
+</tr>
+<tr>
+    <td align="left" class="msg">
+        DKIM
+    </td>
+    <td align="right" class="msg-{%+ if msg_dkim == 'pass'%}pass{% else %}fail{% endif %}">
+        {{ msg_dkim }}
+    </td>
+</tr>
