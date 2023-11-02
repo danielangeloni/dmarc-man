@@ -30,3 +30,17 @@
         {{ msg_dkim }}
     </td>
 </tr>
+<tr>
+    <td class="msg">
+        {% if envelope_to %}
+        envelope_to={{ envelope_to }}<br>
+        {% endif %}
+        {% if envelope_from %}
+        envelope_from={{ envelope_from }}<br>
+        {% endif %}
+        {% if header_from %}
+        header_from={{ header_from }}
+        {% endif %}
+    </td>    
+    <td></td>
+</tr>

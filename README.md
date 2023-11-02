@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ```
 Then call the run.py script 
 ```
-python run.py
+python -m dmarc_man.run
 ```
 
 ## .env file

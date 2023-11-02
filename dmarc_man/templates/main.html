@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{{ domain }} Weekly DMARC Report</title>
+    <style>
+        /* -------------------------------------
+            GLOBAL RESETS & ESSENTIALS
+        ------------------------------------- */
+        img {
+            border: none;
+            -ms-interpolation-mode: bicubic;
+            max-width: 100%;
+        }
+
+        .preheader {
+            color: transparent;
+            display: none;
+            height: 0;
+            max-height: 0;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            mso-hide: all;
+            visibility: hidden;
+            width: 0;
+        }
+
+        body,
+        table,
+        table td {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f6f6f6;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.4;
+            color: #333;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        table {
+            border-collapse: separate;
+            width: 100%;
+        }
+
+        /* -------------------------------------
+            CONTAINER & CONTENT
+        ------------------------------------- */
+        .body {
+            background-color: #f6f6f6;
+            width: 100%;
+        }
+
+        .container {
+            display: block;
+            margin: 0 auto !important;
+            max-width: 580px;
+            padding: 10px;
+            border: 1px solid #e6e6e6;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .content {
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+            max-width: 580px;
+            padding: 10px;
+        }
+
+        /* -------------------------------------
+            MAIN CONTENT AREA
+        ------------------------------------- */
+        .main {
+            background: #ffffff;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        .wrapper {
+            box-sizing: border-box;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 35px;
+            font-weight: 300;
+            text-align: center;
+            text-transform: capitalize;
+            color: #2E86C1;
+            margin-bottom: 30px;
+        }
+
+        p,
+        ul,
+        ol {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        .footer {
+            clear: both;
+            margin-top: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 20px 0;
+            font-size: 12px;
+        }
+
+        hr {
+            border-top: 1px solid #eee;
+        }
+
+        /* -------------------------------------
+            REPORTING STYLES
+        ------------------------------------- */
+        .msg {
+            padding-left: 15px;
+            padding-bottom: 5px;
+        }
+
+        .msg-pass {
+            color: green;
+            padding-bottom: 5px;
+        }
+
+        .msg-partial {
+            color: goldenrod;
+            padding-bottom: 5px;
+        }
+
+        .msg-fail {
+            color: red;
+            padding-bottom: 5px;
+        }
+
+        /* -------------------------------------
+            RESPONSIVE STYLES
+        ------------------------------------- */
+        @media only screen and (max-width: 620px) {
+            table.body h1 {
+                font-size: 28px !important;
+                margin-bottom: 10px !important;
+            }
+
+            table.body p,
+            table.body ul,
+            table.body ol,
+            table.body td,
+            table.body span,
+            table.body a {
+                font-size: 16px !important;
+            }
+
+            table.body .wrapper,
+            table.body .article {
+                padding: 10px !important;
+            }
+
+            table.body .content {
+                padding: 0 !important;
+            }
+
+            table.body .container {
+                padding: 0 !important;
+                width: 100% !important;
+            }
+        }
+
+        @media all {
+            .ExternalClass {
+                width: 100%;
+            }
+
+            .ExternalClass,
+            .ExternalClass p,
+            .ExternalClass span,
+            .ExternalClass font,
+            .ExternalClass td,
+            .ExternalClass div {
+                line-height: 100%;
+            }
+
+            .apple-link a,
+            #MessageViewBody a {
+                color: inherit;
+                text-decoration: none;
+                font-size: inherit;
+                font-family: inherit;
+                font-weight: inherit;
+                line-height: inherit;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <span class="preheader">Here is your weekly DMARC report. {{ verdict_summary }}.</span>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+        <tr>
+            <td>&nbsp;</td>
+            <td class="container">
+                <div class="content">
+                    <table role="presentation" class="main">
+                        <tr>
+                            <td class="wrapper">
+                                <p style="text-align: center;font-size: 2.2rem;color: #2E86C1;">dmarc-man</p>
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>
+                                            <p>Hi there,</p>
+                                            <p>Here's your weekly DMARC report for <strong>{{ domain }}</strong>. {{
+                                                verdict_summary }}</p>
+                                            <hr>
+                                            {{ report|safe }}
+                                            <p>Warm regards,<br> -dmarc-man</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="footer">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center">
+                            <tr>
+                                <td class="content-block" align="center">
+                                    Sent with <span class="heart">&hearts;</span> by dmarc-man.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</body>
+
+</html>
